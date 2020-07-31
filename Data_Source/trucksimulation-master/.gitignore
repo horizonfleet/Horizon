@@ -1,0 +1,13 @@
+*~
+.project
+.settings
+.idea
+trucksimulation.iml
+*.class
+*/target
+server/file-uploads
+server/.vertx
+.classpath
+target
+vertx-default-jul-logging.properties
+connection_strings

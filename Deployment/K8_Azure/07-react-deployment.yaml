@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: react
+  name: react
+spec:
+  #replicas: Autoscale
+  selector:
+    matchLabels:
+      io.kompose.service: react
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/kafka_cluster: "true"
+        io.kompose.service: react
+    spec:
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+      containers:
+      - name: react
+        image: horizoncr.azurecr.io/react:1.0
+        imagePullPolicy: ""
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: 1024Mi
+          requests:
+            memory: 512Mi
+      imagePullSecrets:
+        - name: horizoncred
+status: {}

@@ -1,0 +1,1 @@
+Import the entire contents of the data folder of a mongodb that can be used with fleetsim here, ecept for the logs inside the folder "journal"

@@ -1,0 +1,27 @@
+{
+	"port": 8080,
+	"simulation": {
+		"osmFile": "osm/germany-latest.osm.pbf",
+		"msgInterval": 120,
+		"receiverUrl": "http://localhost:9090/api/v1/fleet-telematics",
+		"postData": true,
+		"interval_ms": 1000,
+		"usingDocker": true
+	},
+	"mongodb": {
+		"http.port": 27017,
+		"db_name": "trucksimulation",
+		"connection_string": "mongodb://mongo:27017/"
+	},
+	"kafka": {
+		"postData": true,
+		"connection_string": "kafka:9092",
+		"topic": "simulation",
+		"startTopic": "truckstart",
+		"arrivalTopic": "truckarrived"
+	},
+	"amqp": {
+		"enabled": false,
+		"uri": "amqp://localhost"
+	}
+}

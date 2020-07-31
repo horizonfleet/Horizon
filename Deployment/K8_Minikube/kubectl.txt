@@ -1,0 +1,63 @@
+minikube delete
+minikube start --cpus 2 --memory 6144
+
+# LOCAL Images:
+# @FOR /f "tokens=*" %i IN ('minikube docker-env') DO @%i
+# OR:
+# eval $(minikube docker-env)
+# docker build --tag mongobase:1.7 mongo
+# docker build --tag fleetsim:1.0 trucksimulation-master
+# OR:
+# docker-compose build
+
+# kubectl apply -f kafka-service.yaml,zookeeper-service.yaml,kafka-deployment.yaml,zookeeper-deployment.yaml
+# kubectl apply -f 00-namespace.yaml,01-zookeeper-service.yaml,02-zookeeper-deployment.yaml,03-kafka-broker1-deployment.yaml
+# kubectl apply -f dummy1-deployment.yaml,dummy2-deployment.yaml
+
+#don't always apply because that changes ip adresses:
+kubectl apply -f 06-api-service.yaml,07-react-service.yaml
+
+# Deploy in this order:
+kubectl apply -f 01-zookeeper-service.yaml
+kubectl apply -f 01-zookeeper-deployment.yaml,02-kafka-broker1-deployment.yaml
+kubectl apply -f 03-mongo-service.yaml,04-simulation-service.yaml
+kubectl apply -f 03-mongo-deployment.yaml,04-simulation-deployment.yaml
+kubectl apply -f 05-spark-graph-deployment.yaml
+kubectl apply -f 05-batch-layer-deployment.yaml
+kubectl apply -f 05-batch-layer-cronjob.yaml
+kubectl apply -f 06-api-deployment.yaml
+kubectl apply -f 07-react-deployment.yaml
+
+
+# Start simulation from anywhere:
+kubectl port-forward Pod_id 8080:8080
+curl -X GET http://localhost:8080/api/v1/simulations
+curl -X POST http://localhost:8080/api/v1/simulations/largeSim/start
+
+# View frontend in localhost:3000
+kubectl port-forward frontend_pod_id 3000:3000
+
+open localhost:3000 in a browser
+
+# bash into pod
+kubectl exec --stdin --tty podid -- /bin/bash
+
+# shut down pods:
+kubectl delete -f 07-react-deployment.yaml
+kubectl delete -f 06-api-deployment.yaml
+kubectl delete -f 05-batch-layer-deployment.yaml
+kubectl delete -f 05-batch-layer-cronjob.yaml
+kubectl delete -f 05-spark-graph-deployment.yaml
+kubectl delete -f 03-mongo-deployment.yaml,04-simulation-deployment.yaml
+kubectl delete -f 01-zookeeper-deployment.yaml,02-kafka-broker1-deployment.yaml
+
+# Only shutdown services if required!
+kubectl delete -f 03-mongo-service.yaml,04-simulation-service.yaml,01-zookeeper-service.yaml
+# Never shutdown these:
+kubectl delete -f 06-api-service.yaml,07-react-service.yaml
+
+# Delete all
+kubectl -n default delete pod,svc --all
+
+# local dev:
+minikube stop

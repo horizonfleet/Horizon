@@ -1,0 +1,444 @@
+body,
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.Sidebar {
+  width: 80px;
+  height: 100%;
+  position: fixed;
+  background-color: #141e56;
+  padding: 0px;
+}
+.Sidebar .Logo {
+  color: white;
+  text-align: center;
+  padding: 30px 0px;
+  text-decoration: underline;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.Sidebar .Logo:hover {
+  color: #0fc7e3;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.Sidebar .Item {
+  color: #606894;
+  text-align: center;
+  padding: 20px 0px;
+}
+.Sidebar .Item:hover {
+  /* background-color: #0fc7e3; */
+  cursor: pointer;
+  transition: color 0.5s;
+  color: white;
+}
+
+.Active {
+  background-color: #0fc7e3;
+  color: white !important;
+}
+
+.Sidebar .Item-Text {
+  font-size: 12px;
+}
+
+/**
+------------------------------
+New Css
+------------------------------
+*/
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+.detail-header {
+  background-color: white;
+  position: fixed;
+  margin-left: 80px;
+  min-width: 300px;
+  height: 15%;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 0px 0px 10px 10px;
+  /* padding: 20px 20px 0px 20px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.detail-header-icon {
+  background-color: #0fc7e3;
+  border-radius: 5px;
+  width: 15px;
+  height: auto;
+  padding: 10px;
+  color: white;
+}
+
+.detail-header-description {
+  padding: 5px 10px;
+  color: #141e56;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.detail-header-time {
+  padding-left: 20px;
+  color: #141e56;
+  font-size: 12px;
+}
+
+.detail-sort-dropdown {
+  background-color: #eff4f9;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+}
+.detail-sort-dropdown > option {
+  outline: none;
+}
+
+.detail-list {
+  position: absolute;
+  /* padding: 20px; */
+  min-width: 300px;
+  height: 85%;
+  bottom: 0;
+  /* top: 110px; */
+  margin-left: 80px;
+  overflow: auto;
+}
+
+body {
+  background-color: #eff4f9;
+}
+
+.flex-container {
+  display: flex;
+  margin: 0px 20px 20px 20px;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.flex-container:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fbfcfd;
+  cursor: pointer;
+  transition: background-color 0.5s, box-shadow 0.25s;
+}
+
+.flex-container > div {
+  width: 100%;
+  margin: 5px 10px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 20px 20px 20px;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.flex-container-column:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fbfcfd;
+  cursor: pointer;
+  transition: background-color 0.5s, box-shadow 0.25s;
+}
+
+.flex-container-column > div {
+  width: 100%;
+  margin: 5px 10px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  color: #141e56;
+}
+
+.left-column > div {
+  padding: 5px 0px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.right-column > div {
+  padding: 5px 0px;
+}
+
+.left-detail-column {
+  display: flex;
+  flex-basis: 40px;
+  flex-direction: column;
+  align-items: left;
+  color: #141e56;
+}
+
+.left-detail-column > div {
+  padding: 5px 0px;
+}
+
+.middle-detail-column {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  color: #141e56;
+}
+
+.middle-detail-column > div {
+  padding: 3px 0px;
+}
+
+.right-detail-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.right-detail-column > div {
+  padding: 1px 0px;
+}
+
+.detail-route-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #141e56;
+}
+
+.detail-route-row > div {
+  padding: 0px 2px;
+}
+
+.left-detail-route-column {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  align-items: center;
+  color: #141e56;
+}
+
+.right-detail-route-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.right-detail-route-column > div {
+  padding: 10px 0px;
+}
+
+progress {
+  width: 180%;
+  -webkit-transform-origin: 0 100%;
+  -webkit-transform: rotate(90deg);
+  -moz-transform-origin: 0 100%;
+  -moz-transform: rotate(90deg);
+  -ms-transform-origin: 0 100%;
+  -ms-transform: rotate(90deg);
+  transform-origin: 50% 50%;
+  transform: rotate(90deg);
+}
+
+.truck-info-subcolumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.truck-info-subcolumn > div {
+  padding: 2px 16px;
+}
+
+.truck-info-subrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.truck-info-progress {
+  width: 90%;
+}
+
+.truck-id {
+  font-size: 10px;
+  text-align: left;
+}
+
+.truck-number-plate {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.truck-detail-number-plate {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.truck-detail-type {
+  font-size: 12px;
+  text-align: left;
+}
+
+.truck-route-subtitle {
+  font-size: 12px;
+  text-align: left;
+}
+
+.truck-route-title {
+  font-size: 18px;
+  text-align: left;
+}
+
+.truck-route-text {
+  font-size: 14px;
+  text-align: left;
+}
+
+.truck-info-title {
+  font-size: 18px;
+  text-align: left;
+}
+
+.truck-info-subtitle {
+  font-size: 14px;
+  text-align: left;
+}
+
+.truck-info-text {
+  font-size: 12px;
+  text-align: left;
+}
+
+.truck-info-data {
+  font-size: 12px;
+  text-align: right;
+}
+
+.truck-info {
+  font-size: 12px;
+  text-align: left;
+  display: flex;
+  align-items: left;
+}
+
+.truck-info-warning {
+  padding-right: 10px;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.truck-info-eco {
+  padding-right: 10px;
+  font-size: 10px;
+}
+
+.truck-route {
+  font-size: 12px;
+  text-align: right;
+  width: 100%;
+}
+
+.truck-delay {
+  font-size: 10px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.truck-speed > span {
+  float: right;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.truck-bar {
+  width: 20%;
+  height: 100%;
+  background-color: white;
+  right: 0;
+  position: absolute;
+}
+
+/* Grid */
+
+.truck-list-grid {
+  height: 80vh;
+  overflow-y: scroll;
+}
+.truck-marker {
+  color: #3f51b5;
+  font-size: 16px;
+}
+
+.truck-marker :hover {
+  cursor: pointer;
+  color: #141e56 !important;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 -10px #3f51b5;
+  }
+  40% {
+    box-shadow: 0 0 10px #3f51b5;
+  }
+  60% {
+    box-shadow: 0 0 10px #3f51b5;
+  }
+
+  100% {
+    box-shadow: 0 0 -10px #3f51b5;
+  }
+}
+
+.truck-marker-glow {
+  animation: glowing 2000ms infinite;
+  border-radius: 25px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.truck-marker-selected {
+  z-index: 10;
+}
+
+.truckcard :hover {
+  background-color: #fbfcfd;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.HelperIcon :hover {
+  background-color: #fbfcfd;
+  color: #3f51b5;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}

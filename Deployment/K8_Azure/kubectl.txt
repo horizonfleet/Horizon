@@ -1,0 +1,45 @@
+# Create pull rights secret for container registry:
+kubectl create secret docker-registry horizon --docker-server xxx.registry.xxx --docker-email <mail> --docker-username=<> --docker-password <pwd>
+
+#don't always apply because that changes ip adresses:
+kubectl apply -f 06-api-service.yaml,07-react-service.yaml
+
+# Deploy in this order:
+kubectl apply -f 01-zookeeper-service.yaml
+kubectl apply -f 01-zookeeper-deployment.yaml,02-kafka-broker1-deployment.yaml
+kubectl apply -f 03-mongo-service.yaml,04-simulation-service.yaml
+kubectl apply -f 03-mongo-deployment.yaml,04-simulation-deployment.yaml
+### optional: For initial batch-database setup:
+### optional: kubectl apply -f 05-light_speed_layer-deployment.yaml
+kubectl apply -f 05-spark-graph-deployment.yaml
+kubectl apply -f 05-batch-layer-deployment.yaml
+kubectl apply -f 06-api-deployment.yaml
+kubectl apply -f 07-react-deployment.yaml
+
+# Start simulation from anywhere:
+kubectl port-forward Pod_id 8080:8080
+curl -X GET http://localhost:8080/api/v1/simulations
+curl -X POST http://localhost:8080/api/v1/simulations/largeSim/start
+
+# bash into pod
+kubectl exec --stdin --tty podid -- /bin/bash
+
+# count entries in batch db for delay training:
+db.firstbatch.find({LABEL_final_agg_acc_sec:{$exists:true}}).count()
+
+# shut down pods:
+kubectl delete -f 07-react-deployment.yaml
+kubectl delete -f 06-api-deployment.yaml
+kubectl delete -f 05-spark-graph-deployment.yaml
+kubectl delete -f 05-batch-layer-deployment.yaml
+kubectl delete -f 03-mongo-deployment.yaml,04-simulation-deployment.yaml
+kubectl delete -f 01-zookeeper-deployment.yaml,02-kafka-broker1-deployment.yaml
+
+# Only shutdown services if required!
+kubectl delete -f 03-mongo-service.yaml,04-simulation-service.yaml,01-zookeeper-service.yaml
+
+# Never shutdown these unless cluster is shutdown:
+kubectl delete -f 06-api-service.yaml,07-react-service.yaml
+
+# Delete all
+kubectl -n default delete pod,svc --all
