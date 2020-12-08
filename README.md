@@ -6,6 +6,7 @@ The software was developed during summer semester 2020 as part of the course "Da
 
 The team consists of Anja Stütz, David Rundel, Felix Bieswanger, Jan Anders and Sebastian Hermann.
 
+For more information visit our website: https://horizonfleet.github.io.
 
 We ❤ Data!
 
